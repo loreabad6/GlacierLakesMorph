@@ -114,6 +114,7 @@ separability <- function(samples, class, band_names, n = 200, overall_only = T) 
   } else {res}
 }
 
+library(dplyr)
 samplesGEE <- read.csv('samples2015forRF.csv') %>% 
   mutate(class2 = ifelse(class == 0, 'water', ifelse(class == 1, 'shadow', 
                          ifelse(class == 2, 'glacier', ifelse(class == 3, 'bare', 
