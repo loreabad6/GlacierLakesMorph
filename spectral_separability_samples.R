@@ -115,10 +115,10 @@ separability <- function(samples, class, band_names, n = 200, overall_only = T) 
 }
 
 library(dplyr)
-samplesGEE <- read.csv('samples2015forRF.csv') %>% 
+samplesGEE <- read.csv('samples2015_RF.csv') %>% 
   mutate(class2 = ifelse(class == 0, 'water', ifelse(class == 1, 'shadow', 
                          ifelse(class == 2, 'glacier', ifelse(class == 3, 'bare', 
                                        ifelse(class == 4, 'vegetation', 'clouds'))))))
-bands <- names(df[,-c('system.index', 'class', 'class2', '.geo'),  with = F])
+bands <- names(select(samplesGEE,-c('system.index', 'class', 'class2', '.geo')))
 
-separability(samplesGEE, class = 'class2', band_names = bands, n = 195)
+separability(samplesGEE, class = 'class2', band_names = bands, n = 200)
